@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ | STOREVANCE LLC.</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="../index.html"><span class="logo-text">STOREVANCE</span><span class="logo-sub">LLC.</span></a>
+      </div>
+      <nav class="nav" id="nav">
+        <ul class="nav-list">
+          <li><a href="about.html" class="nav-link">会社概要</a></li>
+          <li><a href="services.html" class="nav-link">サービス</a></li>
+          <li><a href="news.html" class="nav-link">ニュース</a></li>
+          <li><a href="blog.html" class="nav-link">ブログ</a></li>
+          <li><a href="contact.html" class="nav-link nav-cta active">お問い合わせ <span class="nav-cta-arrow">↗</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="page-hero-label">CONTACT</p>
+      <h1 class="page-hero-title">お問い合わせ</h1>
+      <p class="page-hero-desc">ご質問・ご依頼・お見積もりなど、お気軽にご連絡ください。<br>通常1〜2営業日以内にご返答いたします。</p>
+    </div>
+  </section>
+
+  <section class="contact-page">
+    <div class="container">
+      <div class="contact-grid">
+
+        <div>
+          <h2 class="contact-info-title">お気軽にご相談ください</h2>
+          <p class="contact-info-desc">サービスに関するご質問、お見積もりのご依頼、その他のお問い合わせなど、何でもお気軽にご連絡ください。初回ご相談は無料で承ります。</p>
+
+          <div class="contact-detail-list">
+            <div class="contact-detail-item">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.1 2 5 5.1 5 9C5 14.2 12 22 12 22C12 22 19 14.2 19 9C19 5.1 15.9 2 12 2Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
+              </div>
+              <div>
+                <div class="contact-detail-label">所在地</div>
+                <div class="contact-detail-text">〒150-0043<br>東京都渋谷区道玄坂1丁目10番8号<br>渋谷道玄坂東急ビル2F</div>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 8l10 6 10-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <div class="contact-detail-label">メール</div>
+                <div class="contact-detail-text">info@storevance.co.jp</div>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <div class="contact-detail-label">対応時間</div>
+                <div class="contact-detail-text">平日 10:00〜18:00（土日祝除く）</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-section">
+            <div class="faq-title">よくあるご質問</div>
+            <div class="faq-list">
+              <div class="faq-item">
+                <div class="faq-q">Q. 対応エリアはどこですか？</div>
+                <div class="faq-a">基本的にはリモートでの対応が可能です。オンサイトは東京都内を中心に承ります。</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">Q. 相談だけでも可能ですか？</div>
+                <div class="faq-a">もちろんです。初回のご相談は無料で承ります。</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">Q. 料金体系はどうなっていますか？</div>
+                <div class="faq-a">サービスや規模によって異なります。お問い合わせいただければ詳細なお見積もりをご提示します。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Web3Forms設定 -->
+            <input type="hidden" name="access_key" value="04d653af-df37-4a9f-8ea1-a9aca647da8b">
+            <input type="hidden" name="subject" value="【STOREVANCE】お問い合わせが届きました">
+            <input type="hidden" name="from_name" value="STOREVANCE お問い合わせフォーム">
+            <input type="hidden" name="redirect" value="http://localhost:8766/pages/thanks.html">
+            <!-- ボットスパム対策 -->
+            <input type="checkbox" name="botcheck" style="display:none">
+
+            <div class="form-group">
+              <label class="form-label" for="name">お名前 <span class="req">*</span></label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="山田 太郎" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="company">会社名・屋号</label>
+              <input type="text" id="company" name="company" class="form-input" placeholder="株式会社〇〇">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">メールアドレス <span class="req">*</span></label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="example@company.co.jp" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="service">ご興味のあるサービス</label>
+              <select id="service" name="service" class="form-select">
+                <option value="">選択してください</option>
+                <option value="スワイプ型LP">スワイプ型LP</option>
+                <option value="AI駆動型プロダクトマネジメント開発支援">AI駆動型プロダクトマネジメント開発支援</option>
+                <option value="MEO対策">MEO対策</option>
+                <option value="飲食メディア事業">飲食メディア事業</option>
+                <option value="フード・グルメイベント開催">フード・グルメイベント開催</option>
+                <option value="その他・複数サービス">その他・複数サービス</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">お問い合わせ内容 <span class="req">*</span></label>
+              <textarea id="message" name="message" class="form-textarea" placeholder="ご相談内容、ご要望、質問事項などをご記入ください。" required></textarea>
+            </div>
+            <button type="submit" class="form-submit">送信する ↗</button>
+            <p class="form-note">送信することで、<a href="privacy.html">プライバシーポリシー</a>に同意したものとみなします。</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <a href="../index.html"><span class="logo-text">STOREVANCE</span><span class="logo-sub">LLC.</span></a>
+          <p class="footer-tagline">テクノロジーでプロが本業に集中できる世界を創る</p>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-nav-col">
+            <div class="footer-nav-col-title">Company</div>
+            <ul>
+              <li><a href="about.html">会社概要</a></li>
+              <li><a href="news.html">ニュース</a></li>
+              <li><a href="blog.html">ブログ</a></li>
+              <li><a href="contact.html">お問い合わせ</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <div class="footer-nav-col-title">Services</div>
+            <ul>
+              <li><a href="services.html#swipe-lp">スワイプ型LP</a></li>
+              <li><a href="services.html#ai-pm">AI駆動型PM支援</a></li>
+              <li><a href="services.html#meo">MEO対策</a></li>
+              <li><a href="services.html#food-media">飲食メディア事業</a></li>
+              <li><a href="services.html#food-event">フード・グルメイベント</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-address">〒150-0043 東京都渋谷区道玄坂1丁目10番8号 渋谷道玄坂東急ビル2F</p>
+        <p class="footer-copy">&copy; 2025 STOREVANCE LLC. All rights reserved. ｜ <a href="privacy.html" style="color:inherit;text-decoration:underline;">プライバシーポリシー</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

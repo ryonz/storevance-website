@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ブログ | STOREVANCE LLC.</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ---- note連携 ブログカード追加スタイル ---- */
+
+    /* ローディング */
+    .blog-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 80px 0;
+      color: var(--color-text-light);
+      font-size: 14px;
+    }
+    .blog-loading-spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--color-border);
+      border-top-color: var(--color-accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* 記事なし / エラー */
+    .blog-empty {
+      text-align: center;
+      padding: 80px 0;
+    }
+    .blog-empty-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .blog-empty-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+    }
+    .blog-empty-desc {
+      font-size: 14px;
+      color: var(--color-text-light);
+      line-height: 1.8;
+    }
+
+    /* note記事カード（OGP画像対応） */
+    .blog-card-img-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .blog-card-img-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d1a1a 100%);
+      font-size: 36px;
+    }
+
+    /* note ソースバッジ */
+    .blog-card-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #41C9A0;
+      margin-bottom: 6px;
+    }
+    .blog-card-source::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #41C9A0;
+      border-radius: 50%;
+    }
+
+    /* もっと読むボタンエリア */
+    .blog-footer-area {
+      margin-top: 56px;
+      text-align: center;
+    }
+    .blog-article-count {
+      font-size: 13px;
+      color: var(--color-text-light);
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="../index.html"><span class="logo-text">STOREVANCE</span><span class="logo-sub">LLC.</span></a>
+      </div>
+      <nav class="nav" id="nav">
+        <ul class="nav-list">
+          <li><a href="about.html" class="nav-link">会社概要</a></li>
+          <li><a href="services.html" class="nav-link">サービス</a></li>
+          <li><a href="news.html" class="nav-link">ニュース</a></li>
+          <li><a href="blog.html" class="nav-link active">ブログ</a></li>
+          <li><a href="contact.html" class="nav-link nav-cta">お問い合わせ <span class="nav-cta-arrow">↗</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="page-hero-label">BLOG</p>
+      <h1 class="page-hero-title">ブログ</h1>
+      <p class="page-hero-desc">プロダクトマネジメント・マーケティング・テクノロジーの知見を発信します。</p>
+    </div>
+  </section>
+
+  <section class="blog-page">
+    <div class="container">
+
+      <!-- noteバナー -->
+      <div class="note-banner">
+        <div class="note-banner-text">
+          <div class="note-banner-label">NOTE</div>
+          <h2 class="note-banner-title">noteで記事を公開中</h2>
+          <p class="note-banner-desc">STOREVANCEのブログはnoteで配信しています。プロダクトマネジメント、マーケティング戦略、テクノロジーなどについての知見を定期的に発信しています。</p>
+        </div>
+        <div class="note-banner-action">
+          <a href="https://note.com/storevance" target="_blank" rel="noopener noreferrer" class="btn btn-note">noteで読む ↗</a>
+        </div>
+      </div>
+
+      <!-- 記事グリッド（JS動的生成） -->
+      <div class="blog-grid" id="blogGrid">
+        <!-- ローディング表示 -->
+        <div class="blog-loading" id="blogLoading" style="grid-column: 1/-1;">
+          <div class="blog-loading-spinner"></div>
+          <span>noteから記事を読み込み中...</span>
+        </div>
+      </div>
+
+      <!-- フッターエリア -->
+      <div class="blog-footer-area" id="blogFooter" style="display:none;">
+        <p class="blog-article-count" id="blogArticleCount"></p>
+        <a href="https://note.com/storevance" target="_blank" rel="noopener noreferrer" class="btn btn-outline">noteで全記事を読む ↗</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <a href="../index.html"><span class="logo-text">STOREVANCE</span><span class="logo-sub">LLC.</span></a>
+          <p class="footer-tagline">テクノロジーでプロが本業に集中できる世界を創る</p>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-nav-col">
+            <div class="footer-nav-col-title">Company</div>
+            <ul>
+              <li><a href="about.html">会社概要</a></li>
+              <li><a href="news.html">ニュース</a></li>
+              <li><a href="blog.html">ブログ</a></li>
+              <li><a href="contact.html">お問い合わせ</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <div class="footer-nav-col-title">Services</div>
+            <ul>
+              <li><a href="services.html#swipe-lp">スワイプ型LP</a></li>
+              <li><a href="services.html#ai-pm">AI駆動型PM支援</a></li>
+              <li><a href="services.html#meo">MEO対策</a></li>
+              <li><a href="services.html#restaurant-marketing">飲食店マーケティング</a></li>
+              <li><a href="services.html#food-event">フード・グルメイベント</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-address">〒150-0043 東京都渋谷区道玄坂1丁目10番8号 渋谷道玄坂東急ビル2F</p>
+        <p class="footer-copy">&copy; 2025 STOREVANCE LLC. All rights reserved. ｜ <a href="privacy.html" style="color:inherit;text-decoration:underline;">プライバシーポリシー</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const NOTE_RSS_URL = 'https://note.com/storevance/rss';
+      const RSS2JSON_API = 'https://api.rss2json.com/v1/api.json';
+      const MAX_ARTICLES = 6;
+
+      const grid = document.getElementById('blogGrid');
+      const loading = document.getElementById('blogLoading');
+      const footer = document.getElementById('blogFooter');
+      const articleCount = document.getElementById('blogArticleCount');
+
+      // 日付フォーマット（例: 2025.04.10）
+      function formatDate(dateStr) {
+        if (!dateStr) return '';
+        const d = new Date(dateStr);
+        if (isNaN(d.getTime())) return '';
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return `${y}.${m}.${day}`;
+      }
+
+      // HTML タグを除去してプレーンテキストを取得
+      function stripHtml(html) {
+        const div = document.createElement('div');
+        div.innerHTML = html || '';
+        return div.textContent || div.innerText || '';
+      }
+
+      // カテゴリ推定（タグや本文キーワードから）
+      function guessCategory(item) {
+        const text = ((item.title || '') + ' ' + (item.categories || []).join(' ')).toLowerCase();
+        if (text.match(/ai|chatgpt|llm|gpt|機械学習|人工知能/)) return 'AI・テクノロジー';
+        if (text.match(/meo|seo|google|マップ|検索/)) return 'MEO・SEO';
+        if (text.match(/lp|ランディング|コンバージョン/)) return 'マーケティング';
+        if (text.match(/飲食|レストラン|グルメ|フード|料理/)) return '飲食業界';
+        if (text.match(/プロダクト|pm|ux|デザイン|開発/)) return 'プロダクトマネジメント';
+        if (text.match(/instagram|sns|twitter|x\.com|tiktok/)) return 'SNSマーケティング';
+        if (text.match(/マーケティング|集客|広告|ブランド/)) return 'マーケティング';
+        if ((item.categories || []).length > 0) return item.categories[0];
+        return 'BLOG';
+      }
+
+      // 記事カードHTML生成
+      function createCardHTML(item) {
+        const url = item.link || 'https://note.com/storevance';
+        const title = item.title || '記事タイトル';
+        const date = formatDate(item.pubDate);
+        const thumbnail = item.thumbnail || item.enclosure?.link || '';
+        const category = guessCategory(item);
+        const desc = stripHtml(item.description).slice(0, 80);
+
+        const imgContent = thumbnail
+          ? `<img src="${thumbnail}" alt="${title}" class="blog-card-img-photo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\"blog-card-img-fallback\\">📝</div>'">`
+          : `<div class="blog-card-img-fallback">📝</div>`;
+
+        return `
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="blog-card">
+            <div class="blog-card-img">${imgContent}</div>
+            <div class="blog-card-body">
+              <div class="blog-card-source">note</div>
+              <span class="blog-card-tag">${category}</span>
+              <div class="blog-card-title">${title}</div>
+              ${date ? `<div class="blog-card-date">${date}</div>` : ''}
+            </div>
+          </a>`;
+      }
+
+      // 記事なし表示
+      function showEmpty() {
+        loading.style.display = 'none';
+        grid.innerHTML = `
+          <div class="blog-empty" style="grid-column: 1/-1;">
+            <div class="blog-empty-icon">✍️</div>
+            <div class="blog-empty-title">記事を準備中です</div>
+            <div class="blog-empty-desc">
+              近日公開予定です。<br>
+              <a href="https://note.com/storevance" target="_blank" rel="noopener noreferrer" style="color:var(--color-accent);">noteをフォロー</a>して最新記事をお見逃しなく。
+            </div>
+          </div>`;
+        footer.style.display = 'block';
+        articleCount.textContent = '';
+      }
+
+      // エラー表示
+      function showError() {
+        loading.style.display = 'none';
+        grid.innerHTML = `
+          <div class="blog-empty" style="grid-column: 1/-1;">
+            <div class="blog-empty-icon">📡</div>
+            <div class="blog-empty-title">記事の読み込みに失敗しました</div>
+            <div class="blog-empty-desc">
+              <a href="https://note.com/storevance" target="_blank" rel="noopener noreferrer" style="color:var(--color-accent);">noteで直接ご確認ください ↗</a>
+            </div>
+          </div>`;
+        footer.style.display = 'block';
+      }
+
+      // note RSSをrss2json経由で取得
+      async function fetchNoteArticles() {
+        try {
+          // rss2json.com経由でnote RSSを取得（無料プランはデフォルト10件）
+          const url = `${RSS2JSON_API}?rss_url=${encodeURIComponent(NOTE_RSS_URL)}`;
+          const res = await fetch(url);
+
+          // 422 = RSSが空（記事なし）または無効なフィード
+          if (res.status === 422) {
+            showEmpty();
+            return;
+          }
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+          const data = await res.json();
+
+          if (data.status !== 'ok') {
+            // エラーメッセージが「no items」系ならempty扱い
+            if (data.message && data.message.match(/item|empty|feed/i)) {
+              showEmpty();
+            } else {
+              throw new Error(data.message || 'RSS parse error');
+            }
+            return;
+          }
+
+          const items = (data.items || []).slice(0, MAX_ARTICLES);
+
+          if (items.length === 0) {
+            showEmpty();
+            return;
+          }
+
+          // カード生成
+          loading.style.display = 'none';
+          grid.innerHTML = items.map(createCardHTML).join('');
+
+          // フッター
+          footer.style.display = 'block';
+          if (items.length >= MAX_ARTICLES) {
+            articleCount.textContent = `最新${MAX_ARTICLES}件を表示中`;
+          }
+
+        } catch (err) {
+          console.error('[STOREVANCE Blog] note fetch error:', err);
+          showError();
+        }
+      }
+
+      fetchNoteArticles();
+    })();
+  </script>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
