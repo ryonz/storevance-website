@@ -1744,12 +1744,15 @@ a.hero-news-ticker:hover {
     right: 0;
   }
 
-  /* メニューオーバーレイ */
+  /* メニューオーバーレイ（ナビの後ろ・ヘッダーより前） */
   .nav-overlay {
     display: none;
     position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.35);
     z-index: 1040;
   }
   .nav-overlay.is-active {
