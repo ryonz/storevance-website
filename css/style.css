@@ -123,7 +123,19 @@ ul { list-style: none; }
   align-self: flex-end;
 }
 
-/* ナビゲーション */
+/* ナビゲーション（PC：ヘッダーに重ねて右寄せで固定表示） */
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  padding-right: 40px;
+  z-index: 1001;
+  background: transparent;
+}
+
 .nav-list {
   display: flex;
   align-items: center;
@@ -1726,22 +1738,25 @@ a.hero-news-ticker:hover {
   }
 
   .nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 320px;
-    height: 100vh;
-    background: white;
-    box-shadow: -4px 0 32px rgba(0,0,0,0.12);
-    z-index: 1050;
-    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: calc(var(--header-height) + 24px) 32px 48px;
-    overflow-y: auto;
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important;
+    width: 80% !important;
+    max-width: 320px !important;
+    height: 100vh !important;
+    background: #ffffff !important;
+    box-shadow: -4px 0 32px rgba(0,0,0,0.12) !important;
+    z-index: 1050 !important;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    padding: calc(var(--header-height) + 24px) 32px 48px !important;
+    overflow-y: auto !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   .nav.nav-open {
-    right: 0;
+    right: 0 !important;
   }
 
   /* メニューオーバーレイ：使用しない */
