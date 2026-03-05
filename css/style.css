@@ -1744,9 +1744,10 @@ a.hero-news-ticker:hover {
     right: 0;
   }
 
-  /* メニューオーバーレイ：非表示 */
+  /* メニューオーバーレイ：使用しない */
   .nav-overlay {
     display: none !important;
+    pointer-events: none !important;
   }
 
   .nav-list {

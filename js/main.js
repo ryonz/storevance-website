@@ -184,32 +184,20 @@
     const nav = document.getElementById('nav');
     if (!hamburger || !nav) return;
 
-    // オーバーレイを生成
-    const overlay = document.createElement('div');
-    overlay.className = 'nav-overlay';
-    document.body.appendChild(overlay);
-
     function openMenu() {
       nav.classList.add('nav-open');
-      overlay.classList.add('is-active');
       hamburger.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
     }
 
     function closeMenu() {
       nav.classList.remove('nav-open');
-      overlay.classList.remove('is-active');
       hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
     }
 
     hamburger.addEventListener('click', function () {
       const isOpen = nav.classList.contains('nav-open');
       isOpen ? closeMenu() : openMenu();
     });
-
-    // オーバーレイクリックで閉じる
-    overlay.addEventListener('click', closeMenu);
 
     // ナビリンクをクリックしたら閉じる
     nav.querySelectorAll('.nav-link').forEach(function (link) {
@@ -219,6 +207,15 @@
     // ESCキーで閉じる
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') closeMenu();
+    });
+
+    // メニュー外をタップしたら閉じる
+    document.addEventListener('click', function (e) {
+      if (nav.classList.contains('nav-open') &&
+          !nav.contains(e.target) &&
+          !hamburger.contains(e.target)) {
+        closeMenu();
+      }
     });
   }
 
