@@ -1000,6 +1000,20 @@ a.hero-news-ticker:hover {
 }
 
 /* タイムライン */
+/* Values グリッド */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Representative グリッド */
+.rep-grid {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
 .timeline-section { margin-top: 80px; }
 
 .timeline-section-title {
@@ -1785,6 +1799,24 @@ a.hero-news-ticker:hover {
     width: 100%;
     justify-content: center;
     padding: 14px 22px;
+  }
+
+  /* Values：縦1列 */
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Representative：縦並び */
+  .rep-grid {
+    flex-direction: column;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .rep-grid .ceo-card-new {
+    width: 100% !important;
+    box-sizing: border-box;
   }
 
   /* ヒーロー */
