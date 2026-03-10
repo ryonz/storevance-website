@@ -999,11 +999,10 @@ a.hero-news-ticker:hover {
   background: white;
 }
 
-/* タイムライン */
-/* Values グリッド */
+/* Values グリッド（PC：3列） */
 .values-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
   gap: 24px;
 }
 
