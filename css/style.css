@@ -1804,7 +1804,7 @@ a.hero-news-ticker:hover {
   /* Values：縦1列 */
   .values-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 32px;
   }
 
   /* Representative：縦並び */
