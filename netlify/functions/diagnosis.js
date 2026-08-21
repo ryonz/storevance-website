@@ -28,9 +28,9 @@ exports.handler = async (event) => {
     return json(400, { message: '入力内容を確認してください。' });
   }
 
-  const { store, name, email, area, message = '', website = '' } = data;
+  const { store, name, email, phone, area, message = '', website = '' } = data;
   if (website) return json(200, { ok: true });
-  if (![store, name, email, area].every((value) => typeof value === 'string' && value.trim())) {
+  if (![store, name, email, phone, area].every((value) => typeof value === 'string' && value.trim())) {
     return json(400, { message: '必須項目を入力してください。' });
   }
   if (!/^\S+@\S+\.\S+$/.test(email)) return json(400, { message: 'メールアドレスを確認してください。' });
@@ -39,6 +39,7 @@ exports.handler = async (event) => {
     store: escapeHtml(store.trim()),
     name: escapeHtml(name.trim()),
     email: escapeHtml(email.trim()),
+    phone: escapeHtml(phone.trim()),
     area: escapeHtml(area.trim()),
     message: escapeHtml(message.trim()).replace(/\n/g, '<br>') || '（記載なし）',
   };
@@ -48,7 +49,7 @@ exports.handler = async (event) => {
     to: [RECIPIENT],
     reply_to: email.trim(),
     subject: `【無料店舗診断】${store.trim()}様からのお申し込み`,
-    html: `<h1>無料店舗診断のお申し込み</h1><p><b>店舗名：</b>${safe.store}</p><p><b>担当者名：</b>${safe.name}</p><p><b>メールアドレス：</b>${safe.email}</p><p><b>店舗エリア：</b>${safe.area}</p><p><b>相談内容：</b><br>${safe.message}</p>`,
+    html: `<h1>無料店舗診断のお申し込み</h1><p><b>店舗名：</b>${safe.store}</p><p><b>担当者名：</b>${safe.name}</p><p><b>メールアドレス：</b>${safe.email}</p><p><b>電話番号：</b>${safe.phone}</p><p><b>店舗エリア：</b>${safe.area}</p><p><b>相談内容：</b><br>${safe.message}</p>`,
   };
 
   const confirmationEmail = {
