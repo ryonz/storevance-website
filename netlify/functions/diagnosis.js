@@ -1,5 +1,5 @@
 const RESEND_API_URL = 'https://api.resend.com/emails';
-const RECIPIENT = 'ryo.okube@storevance.com';
+const RECIPIENT = 'contact@storevance.com';
 
 const escapeHtml = (value = '') => String(value)
   .replace(/&/g, '&amp;')
