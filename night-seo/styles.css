@@ -239,6 +239,9 @@ img{max-width:100%;display:block}
 .form-full{grid-column:1/-1}
 .diagnosis-form button{cursor:pointer}
 .diagnosis-form button:disabled{opacity:.7}
+.form-honeypot{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.form-status{min-height:1.4em;margin:0;color:#dfd0ff;font-size:12px;font-weight:700;text-align:center}
+.form-privacy{margin:0;color:#bfb7cd;font-size:10px;text-align:center}.form-privacy a{color:#d4baff;text-decoration:underline}
 .footer{width:min(1200px,calc(100% - 48px));margin:auto;padding:21px 0 100px;display:flex;justify-content:space-between;align-items:center;color:#aaa3b4;font-size:9px}
 .footer .logo-word{font-size:16px}
 .footer .logo-note{font-size:9px}
