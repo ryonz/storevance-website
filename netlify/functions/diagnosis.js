@@ -10,11 +10,17 @@ const escapeHtml = (value = '') => String(value)
 
 const json = (statusCode, body) => ({
   statusCode,
-  headers: { 'Content-Type': 'application/json; charset=utf-8' },
+  headers: {
+    'Content-Type': 'application/json; charset=utf-8',
+    'Access-Control-Allow-Origin': 'https://storevance.com',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  },
   body: JSON.stringify(body),
 });
 
 exports.handler = async (event) => {
+  if (event.httpMethod === 'OPTIONS') return { statusCode: 204, headers: json(200, {}).headers };
   if (event.httpMethod !== 'POST') return json(405, { message: 'Method not allowed.' });
 
   if (!process.env.RESEND_API_KEY || !process.env.RESEND_FROM_EMAIL) {
