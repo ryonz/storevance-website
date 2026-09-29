@@ -180,18 +180,19 @@ body.motion-paused::before,body.motion-paused::after{animation-play-state:paused
 body.is-business-page .classi-head .classi-logo{color:#10213b;text-shadow:none}
 @media(max-width:900px){.classi-nav{display:flex!important;margin-left:auto;margin-right:16px;gap:0}.classi-nav>a{display:none}.business-menu{left:auto;right:-55px}.kv-copy h1{font-size:clamp(15px,3.4vw,30px)}}
 /* About STOREVANCE */
-.about-section{display:block;padding:100px 0 108px;margin:32px auto 0;border-top:1px solid rgba(28,35,45,.09);border-bottom:1px solid rgba(28,35,45,.09);scroll-margin-top:90px;text-align:center}
+.about-section{display:grid;grid-template-columns:minmax(270px,.78fr) minmax(0,1.22fr);gap:clamp(48px,6vw,108px);align-items:center;padding:108px 0 116px;margin:32px auto 0;border-top:1px solid rgba(28,35,45,.09);border-bottom:1px solid rgba(28,35,45,.09);scroll-margin-top:90px;text-align:left}
 .about-label{font-size:13px;font-weight:600;color:#65686d;letter-spacing:.08em;margin:0 0 26px}
 .about-intro h2{font-size:clamp(28px,3.1vw,42px);font-weight:700;line-height:1.6;letter-spacing:-.045em;color:#17191c;margin:0}
 .about-subtitle{font-size:12px;line-height:1.8;color:#86898e;margin:16px 0 0}
-.about-story{max-width:760px;margin:58px auto 0;font-size:14px;line-height:2.25;color:#4f545b;letter-spacing:.015em}
+.about-story{max-width:700px;margin:0;font-size:14px;line-height:2.25;color:#4f545b;letter-spacing:.015em}
 .about-story p{margin:0 0 25px}.about-story p:last-child{margin-bottom:0}
 .about-story .about-resolve{font-weight:650;color:#202124}
 .about-story .about-closing{font-size:17px;font-weight:650;color:#202124;margin-top:35px}
-.about-profile{max-width:680px;margin:52px auto 0;padding-top:26px;border-top:1px solid rgba(28,35,45,.09);text-align:right}
-.about-profile-name{margin:0 0 12px;color:#202124;font-size:16px;font-weight:650;line-height:1.6}
-.about-profile-bio{max-width:480px;margin:0 0 0 auto;color:#60656b;font-size:13px;line-height:2.1}
-@media(max-width:700px){.about-section{padding:58px 0 64px;margin-top:22px}.about-intro h2{font-size:30px}.about-label{margin-bottom:18px}.about-story{font-size:13px;line-height:2.15;margin-top:40px}.about-story br{display:none}.about-story .about-closing{font-size:15px}.about-profile{margin-top:42px;text-align:left}.about-profile-bio{margin-left:0}}
+.about-profile{max-width:700px;margin:44px 0 0;padding-top:25px;border-top:1px solid rgba(28,35,45,.09);text-align:left}
+.about-profile-name{margin:15px 0 0;color:#202124;font-size:16px;font-weight:650;line-height:1.6}
+.about-profile-bio{max-width:700px;margin:0;color:#60656b;font-size:13px;line-height:2.1}
+@media(max-width:900px){.about-section{grid-template-columns:1fr;gap:44px}.about-intro h2{font-size:38px}}
+@media(max-width:700px){.about-section{padding:58px 0 64px;margin-top:22px;gap:35px}.about-intro h2{font-size:30px}.about-label{margin-bottom:18px}.about-story{font-size:13px;line-height:2.15}.about-story br{display:none}.about-story .about-closing{font-size:15px}.about-profile{margin-top:36px}.about-profile-bio{margin-left:0}}
 /* Continue the centered editorial rhythm below the About section. */
 #case .case,#support .wrap,.commit .commit-grid,#contact .contact-grid{text-align:center}
 #case .case,.commit .commit-grid,#contact .contact-grid{display:block}
@@ -365,8 +366,8 @@ html{scroll-padding-top:96px}
 </button>
 </div>
 <section id="about" class="about-section" aria-labelledby="about-heading">
-<div class="about-left">
 <div class="about-intro"><p class="about-label jp">私たちについて</p><h2 id="about-heading" class="jp">経営者のそばに、<br>IT参謀を。</h2><p class="about-subtitle">Your Tech Strategist, Right Beside You.</p></div>
+<div class="about-content">
 <div class="about-story jp">
 <p>インターネットが広く普及してから、およそ30年。<br>ITは、あらゆるビジネスに欠かせない存在になりました。</p>
 <p>けれど、すべての経営者がITに精通しているわけではありません。<br>気軽に相談できるパートナーが、いつもそばにいるとも限りません。</p>
@@ -375,11 +376,11 @@ html{scroll-padding-top:96px}
 <p>STOREVANCEは、経営者の「IT参謀」として、<br>社員のように事業の内側に入り込み、<br>戦略の立案から実装・運用まで、一貫して伴走します。</p>
 <p class="about-closing">あなたが、本業に集中できるように。</p>
 </div>
-</div>
 <aside class="about-profile jp" aria-labelledby="representative-name">
-<h3 id="representative-name" class="about-profile-name">代表　奥部諒</h3>
 <p class="about-profile-bio">神戸市生まれ。東京大学大学院を卒業後、LINE株式会社へ入社。その後、PayPayへ出向し、転職。大手企業の新規事業支援を経て独立。</p>
+<h3 id="representative-name" class="about-profile-name">代表　奥部諒</h3>
 </aside>
+</div>
 </section>
 <div id="services" class="services-head">
 <h2 class="jp">相談から実行まで、必要な形で。</h2>
