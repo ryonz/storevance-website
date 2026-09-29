@@ -250,6 +250,46 @@ html{scroll-padding-top:96px}
 .support-note{max-width:820px;margin:18px auto 0;color:#7a828b;font-size:11px;line-height:1.8;text-align:center}
 @media(max-width:900px){.outside-flow{grid-template-columns:1fr 1fr 1fr}.outside-label{grid-column:1/-1}.inside-flow{grid-template-columns:140px minmax(0,1fr) 140px;min-height:420px}.diagram-end{width:132px;height:132px}.diagram-end strong{font-size:16px}.orbit{height:350px}.orbit-point{width:80px;height:80px}.orbit-point strong{font-size:12px}.connector--left{left:145px!important}.connector--right{right:145px!important}}
 @media(max-width:700px){.support-diagram{margin-top:35px}.outside-flow{grid-template-columns:1fr;gap:9px;padding:17px}.outside-label{padding:3px 4px 8px!important}.outside-step{min-height:auto;padding:13px 16px;font-size:13px}.outside-step:not(:last-child)::after{display:none}.inside-flow{display:flex;flex-direction:column;gap:0;min-height:0;padding:62px 14px 28px;border-radius:24px}.inside-label{top:20px;left:22px}.diagram-end{width:132px;height:132px;flex:none}.diagram-end--result{align-self:center}.orbit{width:100%;height:320px;flex:none}.orbit::before{left:1%;right:1%;top:18%;bottom:18%}.orbit::after{left:8%;right:8%;top:13%;bottom:13%}.orbit-core{width:70%;height:160px}.orbit-core strong{font-size:19px}.orbit-core span:last-child{font-size:10px}.orbit-point{width:75px;height:75px}.orbit-point--listen{top:5px;left:2%}.orbit-point--define{top:8px;right:0}.orbit-point--move{bottom:2px;right:17%}.inside-flow .connector{display:none}.support-promise strong{font-size:16px}.support-promise span{font-size:11px}}
+/* Responsive navigation and one-column mobile conversion paths. */
+.nav-toggle{display:none;appearance:none;width:44px;height:44px;align-items:center;justify-content:center;flex-direction:column;gap:5px;padding:0;border:1px solid rgba(16,33,59,.2);border-radius:14px;background:rgba(255,255,255,.75);color:#10213b;cursor:pointer}
+.nav-toggle span{display:block;width:19px;height:2px;border-radius:2px;background:currentColor;transition:transform .2s ease,opacity .2s ease}
+.nav-toggle[aria-expanded="true"] span:first-child{transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:last-child{transform:translateY(-7px) rotate(-45deg)}
+.nav-toggle:focus-visible,.classi-nav a:focus-visible,.business-nav summary:focus-visible{outline:3px solid #155eef;outline-offset:3px}
+@media(max-width:900px){
+  .classi-head .wrap{position:relative}
+  .classi-head .nav-toggle{display:flex;margin-left:auto;flex:none}
+  .classi-head .classi-nav{display:none!important;position:absolute;top:68px;left:0;right:0;z-index:101;margin:0!important;padding:14px 18px 20px;flex-direction:column;align-items:stretch;gap:2px!important;border-top:1px solid #e4e9ef;border-bottom:1px solid #dce2e9;background:rgba(255,255,255,.98);box-shadow:0 16px 25px rgba(16,33,59,.1);font-size:15px!important}
+  .classi-head .classi-nav.is-open{display:flex!important}
+  .classi-head.menu-open{background:rgba(255,255,255,.98)!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+  .classi-head .classi-nav>a,.classi-head .classi-nav summary{display:block!important;width:100%;padding:13px 8px!important;color:#10213b;font-size:15px!important;text-align:left;cursor:pointer}
+  .classi-head .business-nav{width:100%}
+  .classi-head .business-menu{position:static;width:100%;margin:0 0 6px;padding:6px 0 6px 16px;border:0;border-left:2px solid #d7e3f4;border-radius:0;background:transparent!important;box-shadow:none}
+  .classi-head .business-menu a{display:block;padding:10px 8px;font-size:13px}
+  .classi-head .classi-contact{margin-left:8px;flex:none}
+}
+@media(max-width:700px){
+  .kv-search .problem-row{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}
+  .kv-search .problem-input{width:100%;min-width:0;height:52px;font-size:16px}
+  .kv-search .search-submit{width:100%;height:52px;font-size:15px}
+  .support-bento{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto!important;gap:14px}
+  .support-bento .bento-card{grid-column:auto!important;grid-row:auto!important;width:100%}
+  .bento-quote{display:flex!important;flex-direction:column}
+  .bento-quote>.bento-photo{height:215px!important;min-height:0!important;margin:12px 12px 0!important;border-radius:12px!important}
+  .bento-system .bento-photo{height:185px!important}
+  .bento-system .bento-content,.bento-content{padding:22px!important}
+  .bento-advisor{min-height:255px;padding:24px!important}
+  .bento-partner{min-height:245px}
+  .commit h2{font-size:clamp(22px,5.8vw,27px)!important;letter-spacing:-.06em;white-space:nowrap}
+  #contact-form{width:100%;max-width:100%;padding:20px!important}
+  #contact-form .form-fields{width:100%}
+  #contact-form .field{min-width:0;width:100%;padding:12px 14px;font-size:16px;line-height:1.4}
+  #contact-form input.field{height:50px}
+  #contact-form textarea.field{min-height:160px}
+  #contact-form button[type="submit"]{min-height:52px;padding:13px 18px!important;font-size:15px}
+}
+@media(max-width:360px){.classi-head .classi-logo{font-size:15px!important}.classi-head .classi-contact{padding:8px 10px!important;font-size:12px!important}.classi-head .nav-toggle{width:40px;height:40px}}
 </style>
 </head>
 <body>
@@ -257,7 +297,8 @@ html{scroll-padding-top:96px}
 <div class="wrap h-full flex items-center">
 <a href="#" class="classi-logo">STOREVANCE<span class="text-[#155EEF]">.</span>
 </a>
-<nav class="classi-nav">
+<button class="nav-toggle" type="button" aria-label="メニューを開く" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+<nav id="primary-navigation" class="classi-nav" aria-label="グローバルナビゲーション">
 <details class="business-nav">
 <summary>事業内容</summary>
 <div class="business-menu">
@@ -267,6 +308,7 @@ html{scroll-padding-top:96px}
 </details>
 <a href="#services">相談テーマ</a>
 <a href="#about">私たちについて</a>
+<a href="#/company">会社概要</a>
 </nav>
 <a href="#contact" class="classi-contact jp">無料相談</a>
 </div>
@@ -617,5 +659,6 @@ sync()})()</script>
 <script>(()=>{const home=document.getElementById('home-page'),page=document.getElementById('system-development-page'),info=document.getElementById('info-page'),video=document.getElementById('kv-handshake-video'),titles={'#/company':'会社概要','#/privacy':'プライバシーポリシー'};function render(){if(location.hash==='#/terms'){location.replace('pages/terms.html');return}const business=location.hash==='#/business/system-development',title=titles[location.hash],other=business||!!title;home.hidden=other;page.hidden=!business;info.hidden=!title;document.body.classList.toggle('is-business-page',other);document.title=other?(title||'企業ごとのシステム開発')+'｜STOREVANCE':'地方中小企業経営者の相棒になる｜STOREVANCE';document.querySelectorAll('.business-nav').forEach(d=>d.open=false);if(other){video.pause();if(title)document.getElementById('info-title').textContent=title;window.scrollTo(0,0);(business?page:info).querySelector('h1').focus({preventScroll:true})}else{const target=document.getElementById(location.hash.slice(1));if(target)target.scrollIntoView();else window.scrollTo(0,0)}}document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const hash=a.getAttribute('href')==='#'?'#home':a.getAttribute('href');e.preventDefault();if(location.hash===hash)render();else location.hash=hash}));window.addEventListener('hashchange',render);if(location.hash.startsWith('#/'))render();const toggle=document.getElementById('background-motion-toggle');toggle.addEventListener('click',()=>{const paused=document.body.classList.toggle('motion-paused');toggle.setAttribute('aria-pressed',String(paused));toggle.textContent=paused?'背景の動きを再開':'背景の動きを停止'})})()</script>
 <script>(()=>{const details=document.getElementById('company-details'),placeholder=document.getElementById('info-placeholder');function syncCompany(){const company=location.hash==='#/company';details.hidden=!company;placeholder.hidden=company}window.addEventListener('hashchange',syncCompany);syncCompany()})()</script>
 <script>(()=>{const header=document.querySelector('.classi-head'),kv=document.querySelector('.wide-kv'),home=document.getElementById('home-page');function syncHeader(){header.classList.toggle('is-solid',home.hidden||kv.getBoundingClientRect().bottom<=header.getBoundingClientRect().bottom)}window.addEventListener('scroll',syncHeader,{passive:true});window.addEventListener('resize',syncHeader);window.addEventListener('hashchange',syncHeader);syncHeader()})()</script>
+<script>(()=>{const header=document.querySelector('.classi-head'),button=document.querySelector('.nav-toggle'),nav=document.getElementById('primary-navigation');function setOpen(open){nav.classList.toggle('is-open',open);header.classList.toggle('menu-open',open);button.setAttribute('aria-expanded',String(open));button.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');if(!open)nav.querySelectorAll('details').forEach(details=>details.open=false)}button.addEventListener('click',()=>setOpen(button.getAttribute('aria-expanded')!=='true'));nav.addEventListener('click',event=>{if(event.target.closest('a'))setOpen(false)});document.addEventListener('keydown',event=>{if(event.key==='Escape')setOpen(false)});window.addEventListener('resize',()=>{if(window.innerWidth>900)setOpen(false)});window.addEventListener('hashchange',()=>setOpen(false))})()</script>
 </body>
 </html>
