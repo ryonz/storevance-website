@@ -6,3 +6,30 @@
   to = "/.netlify/functions/diagnosis"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/meo-personal/contact"
+  to = "/meo-personal/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/meo-personal/contact/thanks"
+  to = "/meo-personal/page.html"
+  status = 200
+
+[[redirects]]
+  from = "/meo-personal/login"
+  to = "/meo-personal/page.html"
+  status = 200
+
+[[redirects]]
+  from = "/meo-personal/password-reset"
+  to = "/meo-personal/page.html"
+  status = 200
+
+[[headers]]
+  for = "/meo-personal/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"
