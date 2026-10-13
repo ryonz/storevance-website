@@ -55,3 +55,18 @@ sendButton.addEventListener('click', async () => {
 const floating = document.querySelector('.mobile-cta');
 new IntersectionObserver(entries => { floating.classList.toggle('is-hidden', entries[0].isIntersecting); }, { threshold: 0 }).observe(document.querySelector('#contact'));
 if (location.pathname.replace(/\/$/, '') === '/meo-personal/contact') document.querySelector('#contact').scrollIntoView();
+// Keep a usable contact route when the production mail service is not configured.
+fetch('/meo-personal/api/contact', { headers: { Accept: 'application/json' } })
+  .then(response => response.ok ? response.json() : Promise.reject())
+  .then(status => {
+    if (status.available) return;
+    form.querySelector('.form-notice').textContent = '現在、お問い合わせはメールで受け付けています。contact@storevance.com へご連絡ください。';
+    const action = form.querySelector('.form-submit');
+    const link = document.createElement('a');
+    link.className = action.className;
+    link.href = 'mailto:contact@storevance.com?subject=' + encodeURIComponent('MEOパーソナルについてのお問い合わせ');
+    link.textContent = 'メールで問い合わせる →';
+    action.replaceWith(link);
+    form.querySelectorAll('.form-row,.consent-label').forEach(element => { element.hidden = true; });
+    form.addEventListener('submit', event => event.preventDefault(), true);
+  }).catch(() => {});
