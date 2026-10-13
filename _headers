@@ -2,3 +2,8 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'
+
+/meo-personal/
+  Cache-Control: no-cache, max-age=0, must-revalidate
+/meo-personal/contact/
+  Cache-Control: no-cache, max-age=0, must-revalidate
