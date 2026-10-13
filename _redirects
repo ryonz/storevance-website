@@ -1,0 +1,2 @@
+/meo-personal https://meo-personal.com/ 301
+/meo-personal/* https://meo-personal.com/:splat 301
