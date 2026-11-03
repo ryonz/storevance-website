@@ -1,2 +1,12 @@
 /meo-personal https://meo-personal.com/ 301
 /meo-personal/* https://meo-personal.com/:splat 301
+
+# Current website routes
+/pages/contact /contact 301
+/pages/contact.html /contact 301
+/pages/about /company 301
+/pages/about.html /company 301
+/pages/services /services 301
+/pages/services.html /services 301
+/pages/news /news 301
+/pages/news.html /news 301
